@@ -13,8 +13,9 @@ dotenv.config();
 const app = express();
 
 // 2. Middleware
-app.use(express.json());
+
 app.use(cors());
+app.use(express.json());
 
 // 3. Simple Test Route
 app.get("/", (req, res) => {
