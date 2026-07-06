@@ -3,6 +3,7 @@ import { Mail, Github, Linkedin, Instagram, Facebook, Send, CheckCircle2, Messag
 import { motion, AnimatePresence } from "motion/react";
 import { personalInfo } from "../data/portfolioData";
 import { submitContactMessage, ContactFormData } from "../services/api";
+import axios from "axios";
 
 export default function Contact() {
   const [formData, setFormData] = useState({

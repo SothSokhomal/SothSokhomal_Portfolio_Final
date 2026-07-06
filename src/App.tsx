@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Skills from "./components/Skills";
@@ -7,8 +7,18 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import AddProjectForm from "./components/AddProjectForm";
 
 export default function App() {
+  // 1. State to toggle the Admin Panel (Add Project Form)
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+  // 2. State to trigger instant updates across components
+  const [refreshSignal, setRefreshSignal] = useState<number>(0);
+
+  // Function to increment the signal, telling other components to "re-fetch" data
+  const triggerRefresh = () => setRefreshSignal((prev) => prev + 1);
+
   return (
     <div className="relative min-h-screen bg-slate-50 text-gray-800 antialiased font-sans selection:bg-gray-900 selection:text-white">
       {/* Dynamic Global Navbar */}
@@ -21,12 +31,10 @@ export default function App() {
         <Hero />
 
         {/* Dynamic separator */}
-        <div className="w-full h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
         {/* About Me Section Anchor */}
         <div id="aboutMe" className="relative">
-          {/* We've embedded her about info into Hero for natural Apple landing flows,
-              but let's make an elegant, fast-access highlights panel to serve as the AboutMe anchor */}
           <section className="py-20 bg-white relative">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-left">
               <div className="md:col-span-4">
@@ -37,7 +45,7 @@ export default function App() {
                   About Soth Vannak RothChansokhomal
                 </h2>
               </div>
-              <div className="md:col-span-8 p-6 sm:p-8 rounded-2xl bg-slate-50/50 border border-slate-100 shadow-3xs">
+              <div className="md:col-span-8 p-6 sm:p-8 rounded-2xl bg-slate-50/50 border border-slate-100 shadow-sm">
                 <p className="font-sans text-xs sm:text-sm text-gray-600 leading-relaxed">
                   I'm a motivated first-year student pursuing a double major in{" "}
                   <strong className="text-gray-900">Software Engineering</strong> and{" "}
@@ -47,19 +55,19 @@ export default function App() {
                   leadership, technical problem solving, and cross-cultural communication skills.
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 text-center">
-                  <div className="p-3 bg-white rounded-xl border border-gray-150/60 shadow-3xs">
+                  <div className="p-3 bg-white rounded-xl border border-gray-150/60 shadow-sm">
                     <p className="font-sans text-lg font-extrabold text-gray-950">2</p>
                     <p className="text-[10px] text-gray-500 font-medium">Year Student</p>
                   </div>
-                  <div className="p-3 bg-white rounded-xl border border-gray-150/60 shadow-3xs">
+                  <div className="p-3 bg-white rounded-xl border border-gray-150/60 shadow-sm">
                     <p className="font-sans text-lg font-extrabold text-gray-950">6+</p>
                     <p className="text-[10px] text-gray-500 font-medium">Handcrafted Projects</p>
                   </div>
-                  <div className="p-3 bg-white rounded-xl border border-gray-150/60 shadow-3xs">
+                  <div className="p-3 bg-white rounded-xl border border-gray-150/60 shadow-sm">
                     <p className="font-sans text-lg font-extrabold text-gray-950">4</p>
                     <p className="text-[10px] text-gray-500 font-medium">Scholarships Won</p>
                   </div>
-                  <div className="p-3 bg-white rounded-xl border border-gray-150/60 shadow-3xs">
+                  <div className="p-3 bg-white rounded-xl border border-gray-150/60 shadow-sm">
                     <p className="font-sans text-lg font-extrabold text-gray-950">100%</p>
                     <p className="text-[10px] text-gray-500 font-medium">Commitment Intern</p>
                   </div>
@@ -70,38 +78,59 @@ export default function App() {
         </div>
 
         {/* Dynamic separator */}
-        <div className="w-full h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
         {/* Core skills module */}
         <Skills />
 
         {/* Dynamic separator */}
-        <div className="w-full h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
-        {/* Full Interactive Projects Grid */}
-        <Projects />
+        {/* Full Interactive Projects Grid - Pass the signal to listen for changes */}
+        <Projects isAdmin={isAdmin} refreshSignal={refreshSignal} />
+
+        {/* Floating Admin Toggle Button - Requirement 8 */}
+        <div className="fixed bottom-10 right-10 z-50">
+          <button 
+            onClick={() => setIsAdmin(!isAdmin)}
+            className={`shadow-2xl px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 border cursor-pointer ${
+              isAdmin 
+              ? "bg-red-500 text-white border-red-600 hover:bg-red-600" 
+              : "bg-white text-gray-600 border-slate-200 hover:border-gray-900 hover:text-gray-900"
+            }`}
+          >
+            {isAdmin ? "✕ Close Admin Panel" : "Manage Portfolio"}
+          </button>
+        </div>
+
+        {/* Conditional Rendering of the Admin Form - Pass trigger function */}
+        {isAdmin && (
+          <div className="bg-slate-100 border-y border-slate-200 animate-in fade-in slide-in-from-bottom-4 duration-500">
+             <AddProjectForm onProjectAdded={triggerRefresh} />
+          </div>
+        )}
 
         {/* Dynamic separator */}
-        <div className="w-full h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
-        {/* Timeline representation for experiences, leadership roles & volunteer history */}
+        {/* Timeline representation for experiences */}
         <Experience />
 
         {/* Dynamic separator */}
-        <div className="w-full h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
-        {/* Academic summary bento cards for Education, scholarships & certificates */}
+        {/* Academic summary cards */}
         <Education />
 
         {/* Dynamic separator */}
-        <div className="w-full h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
-        {/* Contact form & socials handle connection centre */}
+        {/* Contact form - Requirement 4.1.F */}
         <Contact />
 
       </main>
 
-      {/* Corporate trademark global footer */}
+      {/* Global footer */}
       <Footer />
     </div>
   );

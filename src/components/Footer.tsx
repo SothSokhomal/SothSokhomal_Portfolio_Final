@@ -1,23 +1,24 @@
 import React from "react";
 import { personalInfo } from "../data/portfolioData";
-import { Code2, Heart } from "lucide-react";
+import { Code2 } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const handleJump = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
+    if (!element) return;
+
+    const offset = 80; // height of navbar
+    const bodyRect = document.body.getBoundingClientRect().top;
+    const elementRect = element.getBoundingClientRect().top;
+    const elementPosition = elementRect - bodyRect;
+    const offsetPosition = elementPosition - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -40,22 +41,34 @@ export default function Footer() {
 
           <ul className="mt-4 flex flex-col items-center md:items-start gap-2">
             <li>
-              <button onClick={() => handleJump("aboutMe")} className="hover:text-white transition-colors cursor-pointer">
+              <button
+                onClick={() => handleJump("aboutMe")}
+                className="hover:text-white transition-colors cursor-pointer"
+              >
                 ABOUT ME
               </button>
             </li>
             <li>
-              <button onClick={() => handleJump("skill")} className="hover:text-white transition-colors cursor-pointer">
+              <button
+                onClick={() => handleJump("skill")}
+                className="hover:text-white transition-colors cursor-pointer"
+              >
                 SKILLS
               </button>
             </li>
             <li>
-              <button onClick={() => handleJump("project")} className="hover:text-white transition-colors cursor-pointer">
+              <button
+                onClick={() => handleJump("project")}
+                className="hover:text-white transition-colors cursor-pointer"
+              >
                 PROJECTS
               </button>
             </li>
             <li>
-              <button onClick={() => handleJump("experience")} className="hover:text-white transition-colors cursor-pointer">
+              <button
+                onClick={() => handleJump("experience")}
+                className="hover:text-white transition-colors cursor-pointer"
+              >
                 EXPERIENCE
               </button>
             </li>
