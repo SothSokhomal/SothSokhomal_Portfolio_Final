@@ -10,4 +10,7 @@ declare interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
-declare module "*.pdf";
+declare module "*.pdf" {
+  const content: string;
+  export default content;
+}
