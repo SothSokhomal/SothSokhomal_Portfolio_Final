@@ -999,27 +999,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, Award, Terminal, Code2, AlertCircle, Sparkles, X, Trash2 } from "lucide-react";
