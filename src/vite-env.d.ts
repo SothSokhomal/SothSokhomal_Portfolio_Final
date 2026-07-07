@@ -9,3 +9,5 @@ declare interface ImportMetaEnv {
 declare interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+declare module "*.pdf";

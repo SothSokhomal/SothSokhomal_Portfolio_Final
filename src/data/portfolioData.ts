@@ -1,5 +1,4 @@
 import { Project, SkillCategory, EducationItem, LeadershipItem, ScholarshipItem, CertificateItem } from '../types';
-
 export const personalInfo = {
   name: "Soth Vannak RothChansokhomal",
   shortName: "SothSokhomal",
@@ -152,7 +151,7 @@ export const projectsData: Project[] = [
 export const educationData: EducationItem[] = [
   {
     school: "Cambodia University of Technology and Science (CamTech)",
-    degree: "Bachelor’s Degree in Software Engineering (Double Major: Software Engineering & Business Information Systems)",
+    degree: "Bachelor’s Degree in Software Engineering",
     period: "2024 – Present"
   },
   {
