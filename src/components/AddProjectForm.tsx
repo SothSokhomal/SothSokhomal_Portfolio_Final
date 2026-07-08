@@ -1,9 +1,17 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect, useRef } from "react";
 import axios from "axios";
 
 interface AddProjectFormProps { onProjectAdded: () => void; }
 
 export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps) {
+  const formRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     title: "", description: "", technologies: "", 
     imageUrl: "https://via.placeholder.com/400x300", 
@@ -38,10 +46,9 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps) 
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section ref={formRef} className="py-20 bg-white">
       <div className="max-w-3xl mx-auto px-6 border border-gray-200 p-8 rounded-3xl shadow-xl text-left">
-        <h2 className="text-3xl font-extrabold mb-2 text-gray-900">Add New Project</h2>
-        <p className="text-gray-500 mb-8 text-sm">Update your database. Changes appear instantly below.</p>
+        <h2 className="text-3xl font-extrabold mb-8 text-gray-900">Add New Project</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input className="w-full p-3 border rounded-xl" name="title" placeholder="Project Title *" onChange={handleChange} value={formData.title} required />
           <textarea className="w-full p-3 border rounded-xl" name="description" placeholder="Description *" onChange={handleChange} value={formData.description} required />

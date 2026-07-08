@@ -37,7 +37,7 @@ export const createMessage = async (req, res) => {
       name,
       email,
       subject,
-      telegram, // optional field
+      telegram, 
       message
     });
 

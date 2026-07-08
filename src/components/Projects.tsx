@@ -99,9 +99,6 @@ export default function Projects({ isAdmin, refreshSignal }: ProjectsProps) {
           <span className="font-mono text-xs font-bold tracking-widest text-gray-500 uppercase">Proof of Ability</span>
           <h2 className="font-sans text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 mt-2">My Creative Projects</h2>
           <div className="h-1 w-12 bg-gray-950 rounded-full mx-auto mt-4" />
-          <p className="font-sans text-sm text-gray-500 mt-4 leading-relaxed">
-            {loading ? "Synchronizing with database..." : `Displaying ${allProjects.length} engineering works.`}
-          </p>
         </div>
 
         {/* Filters */}

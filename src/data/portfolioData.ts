@@ -17,40 +17,34 @@ export const personalInfo = {
 
 export const skillsData: SkillCategory[] = [
   {
-    category: "Web Development",
-    items: ["HTML5", "CSS3", "JavaScript (ES6+)", "Responsive Web Design", "Bootstrap"],
+    category: "Web development",
+    items: ["HTML", "CSS", "JavaScript"],
     iconName: "Globe"
   },
-  
   {
     category: "Frontend",
-    items: ["React.js", "Tailwind CSS", "Bootstrap", "Component Architecture"],
+    items: ["React", "Bootstrap"],
     iconName: "Layout"
   },
   {
-    category: "APIs & Backend",
-    items: ["Node.js", "Express.js", "REST API Basics"],
+    category: "Backend",
+    items: ["Node.js", "Express.js"],
     iconName: "Server"
   },
   {
-    category: "Databases",
+    category: "Database",
     items: ["MySQL", "PostgreSQL"],
     iconName: "Database"
   },
   {
-    category: "Languages",
-    items: ["JavaScript", "Python", "C/C++", "Java"],
+    category: "Algorithm",
+    items: ["C++", "Python"],
     iconName: "Code"
   },
   {
-    category: "Development Tools",
-    items: ["Git", "GitHub", "Postman", "Trello"],
+    category: "Tools",
+    items: ["Github", "Figma"],
     iconName: "Cpu"
-  },
-  {
-    category: "Design Tools",
-    items: ["Figma", "Canva"],
-    iconName: "Palette"
   },
   {
     category: "Python Libraries",
@@ -58,8 +52,8 @@ export const skillsData: SkillCategory[] = [
     iconName: "Layers"
   },
   {
-    category: "Soft Skills",
-    items: ["Teamwork & Contribution", "Creative Problem Solving", "Public Speaking", "Cross-cultural Communication"],
+    category: "Soft skills",
+    items: ["Teamwork and Contribution", "Solving problem", "Public Speaking"],
     iconName: "Users"
   }
 ];

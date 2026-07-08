@@ -63,9 +63,6 @@ export default function Experience() {
             My Creative Journeys
           </h2>
           <div className="h-1 w-12 bg-gray-950 rounded-full mx-auto mt-4" />
-          <p className="font-sans text-sm sm:text-base text-gray-500 mt-4 leading-relaxed">
-            From promoting gender-equality in tech to designing sustainable flood control pipelines and competing in regional innovations, I thrive on collaborative action.
-          </p>
         </div>
 
         {/* Timeline container */}

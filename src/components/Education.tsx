@@ -41,10 +41,6 @@ export default function Education() {
             Education & Certifications
           </h2>
           <div className="h-1 w-12 bg-gray-950 rounded-full mx-auto mt-4" />
-          <p className="font-sans text-sm sm:text-base text-gray-500 mt-4 leading-relaxed">
-            Representing my ongoing double-major studies in engineering, academic awards,
-            professional micro-credentials, and linguistic capabilities.
-          </p>
         </div>
 
         {/* Bento Grid */}
@@ -91,7 +87,7 @@ export default function Education() {
             >
               <h4 className="font-sans font-bold text-sm flex items-center gap-2 text-white">
                 <Languages className="w-4.5 h-4.5 text-white" />
-                Linguistic Skills
+                Languages
               </h4>
               <div className="flex gap-4 mt-4">
                 {languagesData.map((lang, idx) => (

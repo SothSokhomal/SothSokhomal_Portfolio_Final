@@ -32,6 +32,8 @@ app.use(errorHandler);
 
 // 6. Database Connection and Server Start
 const PORT = process.env.PORT || 5000;
+
+// const PORT = process.env.PORT || 8080; // AWS often uses 8080
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {

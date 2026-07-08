@@ -167,6 +167,10 @@ export default function App() {
         <Hero />
         <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
         
+        {/* Skills Section */}
+        <Skills />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+
         {/* Pass isAdmin and signal to Projects */}
         <Projects isAdmin={isAdmin} refreshSignal={refreshSignal} />
 
