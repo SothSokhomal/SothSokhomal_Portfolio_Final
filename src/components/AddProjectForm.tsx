@@ -28,7 +28,7 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps) 
       };
 
       // Ensure Port 5001 matches your Server terminal
-      await axios.post("http://localhost:5001/api/projects", payload);
+      await axios.post("http://sothsokhomalportfolio-env.eba-yd5navbm.ap-southeast-2.elasticbeanstalk.com/api/projects", payload);
       
       alert("Project Successfully Added to MongoDB!");
       onProjectAdded(); //Trigger the instant UI update

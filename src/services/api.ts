@@ -20,7 +20,13 @@ export type ProjectItem = {
   githubUrl?: string;     
 };
 
-const API_ROOT = import.meta.env.VITE_API_BASE_URL || "http://localhost:5001/api";
+// const API_ROOT = import.meta.env.VITE_API_BASE_URL || "http://localhost:5001/api";
+// src/services/api.ts
+
+//EMERGENCY FIX: Hardcode your live link here
+const API_ROOT = "http://sothsokhomalportfolio-env.eba-yd5navbm.ap-southeast-2.elasticbeanstalk.com/api";
+
+// ... (keep the rest of the file the same)
 
 async function handleResponse(response: Response) {
   const json = await response.json().catch(() => null);

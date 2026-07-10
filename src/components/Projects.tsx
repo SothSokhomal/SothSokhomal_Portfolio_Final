@@ -68,10 +68,10 @@ export default function Projects({ isAdmin, refreshSignal }: ProjectsProps) {
     if (isDbProject) {
       try {
         // DELETE via API (Port 5001)
-        await axios.delete(`http://localhost:5001/api/projects/${id}`);
-        alert("✅ Deleted from MongoDB database.");
+        await axios.delete(`http://sothsokhomalportfolio-env.eba-yd5navbm.ap-southeast-2.elasticbeanstalk.com/api/projects/${id}`);
+        alert("Deleted from MongoDB database.");
       } catch (err) {
-        alert("❌ Error: API failed to delete.");
+        alert("Error: API failed to delete.");
         return;
       }
     }
