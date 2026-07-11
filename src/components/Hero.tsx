@@ -3,12 +3,9 @@ import { Mail, Github, Linkedin, MapPin, Download, ChevronRight, Sparkles, BookO
 import { motion } from "framer-motion";
 import { personalInfo } from "../data/portfolioData";
 
-// 1. IMPORT THE PDF FILE DIRECTLY
-// Note: Ensure the filename matches exactly as seen in your src/img/ folder
 import myResumePDF from "../img/Soth_vannakrothchansokhomal_Software_Developer_Intern_CV (2).pdf";
 
 export default function Hero() {
-  // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

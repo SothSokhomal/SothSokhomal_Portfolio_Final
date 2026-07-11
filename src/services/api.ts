@@ -20,13 +20,8 @@ export type ProjectItem = {
   githubUrl?: string;     
 };
 
-// const API_ROOT = import.meta.env.VITE_API_BASE_URL || "http://localhost:5001/api";
-// src/services/api.ts
-
-//EMERGENCY FIX: Hardcode your live link here
 const API_ROOT = "http://sothsokhomalportfolio-env.eba-yd5navbm.ap-southeast-2.elasticbeanstalk.com/api";
 
-// ... (keep the rest of the file the same)
 
 async function handleResponse(response: Response) {
   const json = await response.json().catch(() => null);
@@ -61,31 +56,5 @@ export async function submitContactMessage(data: ContactFormData): Promise<{ suc
 
 
 
-// import axios from "axios";
 
-// // Match the port your backend is running on
-// const API_BASE_URL = "http://localhost:5001/api";
 
-// export interface ContactFormData {
-//   name: string;
-//   email: string;
-//   subject: string;
-//   telegram?: string;
-//   message: string;
-// }
-
-// export const submitContactMessage = async (formData: ContactFormData) => {
-//   try {
-//     const response = await axios.post(`${API_BASE_URL}/messages`, formData);
-//     return response.data; // This returns the success message from your backend
-//   } catch (error: any) {
-//     // If the backend is off, throw a clear error
-//     throw new Error(error.response?.data?.message || "Server is not responding");
-//   }
-// };
-
-// // Also ensure your fetchProjects is using the same base URL
-// export const fetchProjects = async () => {
-//   const response = await axios.get(`${API_BASE_URL}/projects`);
-//   return response.data;
-// };
