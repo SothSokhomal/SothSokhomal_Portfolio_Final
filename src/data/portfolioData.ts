@@ -1,9 +1,57 @@
-import { Project, SkillCategory, EducationItem, LeadershipItem, ScholarshipItem, CertificateItem } from '../types';
+export interface SkillCategory {
+  category: string;
+  items: string[];
+  iconName: string;
+}
+
+export interface ProjectData {
+  id?: string;
+  title: string;
+  category: string;
+  technologies: string[];
+  description: string;
+  problem: string;
+  features: string[];
+  contribution: string;
+  challenges: string;
+  lessonsLearned: string;
+  githubUrl?: string;
+  liveUrl?: string;
+  featured?: boolean;
+}
+
+export interface EducationItem {
+  school: string;
+  degree: string;
+  period: string;
+}
+
+export interface LeadershipItem {
+  title: string;
+  organization: string;
+  period: string;
+  description: string;
+}
+
+export interface ScholarshipItem {
+  name: string;
+  provider: string;
+}
+
+export interface CertificateItem {
+  name: string;
+  provider: string;
+  year: string;
+  credentialId?: string;
+  link?: string;
+  file?: string;
+}
+
 export const personalInfo = {
   name: "Soth Vannak RothChansokhomal",
   shortName: "SothSokhomal",
   title: "Software Developer Intern",
-  subtitle: "React | JavaScript | Node.js",
+  subtitle: "React | JavaScript | Node.js | Next.js | TypeScript",
   location: "Phnom Penh, Cambodia",
   phone: "085 257 728",
   email: "soth.vannakrothchansokhomal@gmail.com",
@@ -12,145 +60,171 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/sothvannakrothchansokhomal/",
   instagram: "https://www.instagram.com/soth.vannakrothchansokhomal/",
   facebook: "https://www.facebook.com/rose.555901",
-  bio: "Motivated Software Engineering student with hands-on experience developing web applications using JavaScript, React, Node.js, and REST APIs. Passionate about building practical software solutions, learning new technologies, and collaborating in team environments. A fast learner with strong problem-solving skills seeking to grow as a Software Developer Intern and contribute to impactful technology projects."
+  avatar: "/img/Soth vannak rothchansokhomal.jpg",
+  resumePdf: "/img/Soth_vannakrothchansokhomal_Software_Developer_Intern_CV (2).pdf",
+  bio: "Motivated Software Engineering student at CamTech with hands-on experience developing modern web applications using React, Next.js, Node.js, TypeScript, and REST APIs. Passionate about building high-performance software solutions, sleek user interfaces, and scalable backend architecture."
 };
 
 export const skillsData: SkillCategory[] = [
   {
-    category: "Web development",
-    items: ["HTML", "CSS", "JavaScript"],
+    category: "Web Development",
+    items: ["HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript"],
     iconName: "Globe"
   },
   {
     category: "Frontend",
-    items: ["React", "Bootstrap"],
+    items: ["React.js", "Next.js 14", "Tailwind CSS", "Bootstrap", "Framer Motion"],
     iconName: "Layout"
   },
   {
-    category: "Backend",
-    items: ["Node.js", "Express.js"],
+    category: "Backend & API",
+    items: ["Node.js", "Express.js", "RESTful APIs", "Server Actions"],
     iconName: "Server"
   },
   {
-    category: "Database",
-    items: ["MySQL", "PostgreSQL"],
+    category: "Database & ORM",
+    items: ["MongoDB", "Prisma ORM", "PostgreSQL", "MySQL"],
     iconName: "Database"
   },
   {
-    category: "Algorithm",
-    items: ["C++", "Python"],
+    category: "Algorithms & Languages",
+    items: ["Python", "C++", "Data Structures"],
     iconName: "Code"
   },
   {
-    category: "Tools",
-    items: ["Github", "Figma"],
+    category: "Developer Tools",
+    items: ["GitHub", "Git", "Figma", "Postman", "Vercel"],
     iconName: "Cpu"
   },
   {
-    category: "Python Libraries",
-    items: ["Pygame", "Turtle", "OpenCV"],
+    category: "Computer Vision & AI",
+    items: ["OpenCV", "Pygame", "Dialogflow NLP", "OpenWeatherMap API"],
     iconName: "Layers"
   },
   {
-    category: "Soft skills",
-    items: ["Teamwork and Contribution", "Solving problem", "Public Speaking"],
+    category: "Soft Skills",
+    items: ["Team Leadership & Contribution", "Complex Problem Solving", "Public Speaking", "Agile SCRUM"],
     iconName: "Users"
   }
 ];
 
-export const projectsData: Project[] = [
+export const initialProjectsData: ProjectData[] = [
   {
-    id: 1,
     title: "AI-Powered Weather Chatbot",
     category: "AI & Full-Stack",
-    technologies: ["React.js", "Node.js", "Dialogflow", "OpenWeatherMap API"],
+    technologies: ["React.js", "Node.js", "Dialogflow", "OpenWeatherMap API", "NLP"],
     description: "An intelligent chatbot that answers weather-related questions using natural language processing (NLP). Features real-time weather retrieval with fluid conversational turns.",
     problem: "Traditional weather apps require multiple taps and offer stale configurations, lacking an engaging conversational format.",
-    features: ["Natural Language Processing (NLP) conversation interface", "Real-time weather query parsing via API", "Responsive messaging UI on React"],
+    features: [
+      "Natural Language Processing (NLP) conversation interface",
+      "Real-time weather query parsing via API",
+      "Responsive messaging UI built with React component state"
+    ],
     contribution: "Designed and developed the entire React frontend and integrated Node.js backend logic to securely route credentials to Dialogflow and OpenWeatherMap APIs.",
     challenges: "Handling conversational fallback loops when the model encountered highly abstract or multi-city requests.",
-    lessons: "Deepened engineering expertise in async/await API communications, RESTful response handling, and custom messaging animations.",
-    github: "https://github.com/SothSokhomal/Weather-Bot-App"
+    lessonsLearned: "Deepened engineering expertise in async/await API communications, RESTful response handling, and custom messaging animations.",
+    githubUrl: "https://github.com/SothSokhomal/Weather-Bot-App",
+    featured: true
   },
   {
-    id: 2,
     title: "Personal Portfolio Website",
     category: "Frontend Design",
-    technologies: ["HTML", "CSS", "JavaScript", "React"],
+    technologies: ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "MongoDB", "Prisma"],
     description: "A gorgeous, responsive portfolio representing Soth Vannak RothChansokhomal's professional development journey, academic achievements, and projects.",
     problem: "Employers need a centralized, premium digital hub that clearly communicates technical proficiencies and displays project histories in an instantly legible manner.",
-    features: ["Sleek modern user interface with dark & light high-contrast layout options", "Responsive mobile-first grid", "Direct downloadable resume, clean contact controls"],
+    features: [
+      "Sleek modern user interface with dark & light high-contrast layout options",
+      "Responsive mobile-first grid layout",
+      "Direct downloadable resume, clean contact controls, and secure Admin Dashboard"
+    ],
     contribution: "Crafted the layout structures, responsive grids, geometric backgrounds, and unified typing presentation.",
     challenges: "Achieving complex, fluid geometric curves and floating blobs that scale perfectly across mobile viewports without blocking interactions.",
-    lessons: "Acquired a rigorous mental model of component boundaries, custom interactive hover state styles, and accessibility pairings.",
-    github: "https://github.com/SothSokhomal/SothSokhomal_portfolio",
-    live: "https://sothsokhomal.github.io/SothSokhomal_portfolio/"
+    lessonsLearned: "Acquired a rigorous mental model of component boundaries, custom interactive hover state styles, and accessibility pairings.",
+    githubUrl: "https://github.com/SothSokhomal/SothSokhomal_portfolio",
+    liveUrl: "https://sothsokhomal.github.io/SothSokhomal_portfolio/",
+    featured: true
   },
   {
-    id: 3,
     title: "Expense Tracker Web Application",
     category: "Web App (CRUD)",
-    technologies: ["HTML5", "CSS3", "JavaScript"],
+    technologies: ["HTML5", "CSS3", "JavaScript", "Node.js"],
     description: "A fast, lightweight daily financial tracker. Enables users to maintain records, visualize spending, and manage transactions in real-time.",
     problem: "Standard financial logs are heavy, require persistent authentication, and contain cluttered visual components.",
-    features: ["Add, Read, Update, and Delete transactions easily", "Dynamic table updating without full-page reloads", "Data input validation and total expense indicator"],
+    features: [
+      "Add, Read, Update, and Delete transactions easily",
+      "Dynamic table updating without full-page reloads",
+      "Data input validation and total expense indicator"
+    ],
     contribution: "Built the entire front-end view, set up local memory state synchronization, and programmed the modal triggers.",
     challenges: "Enabling in-line updating where specific elements switch to input fields seamlessly and maintain formatting upon saving.",
-    lessons: "Gained structural expertise in native DOM manipulations, JavaScript form object handlers, and event delegation patterns.",
-    github: "https://github.com/SothSokhomal/expenseapp",
-    live: "https://expenseapp-2usy127qy-sothsokhomals-projects.vercel.app/"
+    lessonsLearned: "Gained structural expertise in native DOM manipulations, JavaScript form object handlers, and event delegation patterns.",
+    githubUrl: "https://github.com/SothSokhomal/expenseapp",
+    liveUrl: "https://expenseapp-2usy127qy-sothsokhomals-projects.vercel.app/",
+    featured: true
   },
   {
-    id: 4,
     title: "Spotify UI Clone",
     category: "UI Cloning",
-    technologies: ["HTML", "CSS", "JavaScript"],
+    technologies: ["HTML5", "CSS3", "JavaScript", "Flexbox & Grid"],
     description: "A highly faithful, fully responsive front-end replication of the Spotify web player experience, prioritizing navigation structure and media cards.",
     problem: "Replicating complex multi-panel desktop layouts on standard browser windows while keeping grid ratios aesthetic.",
-    features: ["Perfect dark-mode replication of modern sidebar, content, and player interfaces", "Hover interactions for playlist covers", "Responsive menu behavior"],
+    features: [
+      "Perfect dark-mode replication of modern sidebar, content, and player interfaces",
+      "Hover interactions for playlist covers",
+      "Responsive menu behavior across mobile and desktop breakpoints"
+    ],
     contribution: "Sole designer and coder. Crafted custom layout scroll behaviors, typography settings, and player slider interactions.",
     challenges: "Managing overlapping fixed elements and setting appropriate overflow properties so specific containers scroll independently.",
-    lessons: "Mastered deep CSS styling protocols including flex alignments, advanced CSS grids, custom scrollbars, and fluid scaling.",
-    github: "https://github.com/SothSokhomal/song_soundie",
-    live: "https://sothsokhomal.github.io/song_soundie/"
+    lessonsLearned: "Mastered deep CSS styling protocols including flex alignments, advanced CSS grids, custom scrollbars, and fluid scaling.",
+    githubUrl: "https://github.com/SothSokhomal/song_soundie",
+    liveUrl: "https://sothsokhomal.github.io/song_soundie/",
+    featured: true
   },
   {
-    id: 5,
     title: "Face Recognition Pipeline",
     category: "Computer Vision",
-    technologies: ["Python", "OpenCV"],
+    technologies: ["Python", "OpenCV", "Haar Cascade", "Computer Vision"],
     description: "An end-to-end computer vision program integrated with real-time webcams to detect individual faces, compute bounding coordinates, and verify identity labels.",
     problem: "Real-time video frame parsing is intensive and often causes performance stutters or delayed recognition loops.",
-    features: ["Real-time webcam stream input processing", "Accurate bounding boxes on multiple faces", "Identified label tagging with instant name overlay"],
+    features: [
+      "Real-time webcam stream input processing",
+      "Accurate bounding boxes on multiple faces simultaneously",
+      "Identified label tagging with instant name overlay"
+    ],
     contribution: "Programmed the camera collection pipeline, integrated the pre-trained cascade parameters, and managed training structures.",
     challenges: "Minimizing false positives under variable illumination and maintaining consistent 30 FPS playback rates on standard laptop hardware.",
-    lessons: "Understood computer vision fundamentals: image matrices, grayscale transformations, classification thresholds, and real-time threading.",
-    github: "https://github.com/SothSokhomal/Face_Recognition"
+    lessonsLearned: "Understood computer vision fundamentals: image matrices, grayscale transformations, classification thresholds, and real-time threading.",
+    githubUrl: "https://github.com/SothSokhomal/Face_Recognition",
+    featured: true
   },
   {
-    id: 6,
     title: "Classic Snake Game",
     category: "Game Dev",
     technologies: ["Python", "Pygame"],
     description: "An elegant recreation of the retro arcade classic. Features intuitive directional inputs, scoring systems, and progressive velocity parameters.",
     problem: "Ensuring game-loop synchronization across different hardware speeds while tracking continuous coordinate loops.",
-    features: ["Smooth control response mechanics", "Dynamic coordinate generation for randomized food spawns", "Continuous velocity multipliers to ramp difficulty"],
+    features: [
+      "Smooth control response mechanics",
+      "Dynamic coordinate generation for randomized food spawns",
+      "Continuous velocity multipliers to ramp difficulty as score increases"
+    ],
     contribution: "Designed game loop matrices, programmed cell collision logic, and implemented key press event listener handlers.",
     challenges: "Solving sudden edge-collision bugs where immediate double-taps on opposing directions triggered instant self-collision.",
-    lessons: "Obtained a deep mathematical understanding of continuous game state rendering, input polling, bounding check loops, and visual layers.",
-    github: "https://github.com/SothSokhomal/SnakeGame"
+    lessonsLearned: "Obtained a deep mathematical understanding of continuous game state rendering, input polling, bounding check loops, and visual layers.",
+    githubUrl: "https://github.com/SothSokhomal/SnakeGame",
+    featured: true
   }
 ];
 
 export const educationData: EducationItem[] = [
   {
     school: "Cambodia University of Technology and Science (CamTech)",
-    degree: "Bachelor’s Degree in Software Engineering",
+    degree: "Bachelor's Degree in Software Engineering",
     period: "2024 – Present"
   },
   {
     school: "Australian Center for Education (ACE)",
-    degree: "General English Program",
+    degree: "General English Program (GEP)",
     period: "2016 – 2023"
   },
   {
@@ -158,10 +232,9 @@ export const educationData: EducationItem[] = [
     degree: "High School Diploma (Graduated)",
     period: "Graduated: 2024"
   },
-
   {
     school: "Champion Coders Australia",
-    degree: "Kid for code club",
+    degree: "Kid for Code Club",
     period: "Graduated: 2024"
   }
 ];
@@ -173,7 +246,6 @@ export const leadershipData: LeadershipItem[] = [
     period: "2026",
     description: "Promoted technology education and encouraged youth, especially women, to participate in STEM and computer programming through workshops, leadership sessions, and outreach."
   },
-
   {
     title: "SEA Sponge City Innovation Challenge",
     organization: "Sponge City Challenge",
@@ -190,7 +262,7 @@ export const leadershipData: LeadershipItem[] = [
     title: "E-Gen Innovation Program",
     organization: "Ministry of Education, Youth and Sport (MoEYS)",
     period: "December 2025 - February 2026",
-    description: "Collaborated with a cross-functional team to conceptualize and develop an innovative project, securing First Runner-Up recognition (Top 5) in a national program host by MoEYS."
+    description: "Collaborated with a cross-functional team to conceptualize and develop an innovative project, securing First Runner-Up recognition (Top 5) in a national program hosted by MoEYS."
   },
   {
     title: "Cambodian Delegate - eMpowering Youths Across ASEAN Cohort 6",
@@ -232,7 +304,7 @@ export const certificatesData: CertificateItem[] = [
     year: "Jun 2026",
     credentialId: "1006580",
     link: "https://www.linkedin.com/in/sothvannakrothchansokhomal/",
-    file: new URL("../img/Soth Vannak Rothchansokhomal - Scrum Master Certification - Certificate.pdf", import.meta.url).href
+    file: "/img/Soth Vannak Rothchansokhomal - Scrum Master Certification - Certificate.pdf"
   },
   { name: "UX/UI Design Short Course", provider: "Future.Bit Academy", year: "2025" },
   { name: "Introduction to Dynamic Web Development (HTML, CSS, JS)", provider: "Champion Coders", year: "2024" },
